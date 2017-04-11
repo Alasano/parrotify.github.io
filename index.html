@@ -12,7 +12,12 @@
         var parrotOverlayImage = document.getElementById("parrot").value;
         var parrotOverlayOffsetX = document.getElementById("horizontalPosition").value;
         var parrotOverlayOffsetY = document.getElementById("verticalPosition").value;
-        var newImprovedParrot = basicParrotImage + "?overlay=" + parrotOverlayImage + "&overlayWidth=" + imageWidthChanged + "&overlayHeight=" + imageHeightChanged + "&overlayOffsetX=" + parrotOverlayOffsetX + "&overlayOffsetY=" + parrotOverlayOffsetY;
+        var parrotCongaBool = document.getElementById("congaParrot").checked;
+        var congaURL = "";
+        if(parrotCongaBool) {
+            congaURL = "/congaparrot";
+        }
+        var newImprovedParrot = basicParrotImage + congaURL + "?overlay=" + parrotOverlayImage + "&overlayWidth=" + imageWidthChanged + "&overlayHeight=" + imageHeightChanged + "&overlayOffsetX=" + parrotOverlayOffsetX + "&overlayOffsetY=" + parrotOverlayOffsetY;
         document.getElementById("parrotImage").src = newImprovedParrot;
         document.getElementById("parrotImageURL").value = newImprovedParrot;
     }
@@ -66,6 +71,11 @@
     <p>Set the overlain image vertical position:</p>
     <input type="range" min="-30" max="30" value="0" id="verticalPosition" oninput="showValueVertical(this.value)" onchange="parrotify()" />
     <span id="rangeVerticalPosition">0</span> <span>pixels</span>
+    <br />
+    <br />
+    <input type="checkbox" id="congaParrot" onchange="parrotify()">
+    <span >Conga?</span>
+    <br />
     <br />
     <a class="button-small" onclick="parrotify()">Refresh the parrot!</a>
     <br />
